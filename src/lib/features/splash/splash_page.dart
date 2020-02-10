@@ -14,14 +14,41 @@ class SplashPage extends StatelessWidget {
             create: (_) =>
                 SplashStore(Provider.of<NavigationService>(context))),
       ],
-      child: Scaffold(
-          body: Container(
-              color: Color.fromARGB(255, 145, 205, 181),
-              child: Center(
-                  child: Text(
-                "KEYS",
-                style: TextStyle(fontSize: 64, fontWeight: FontWeight.bold),
-              )))),
+      child: Builder(
+          builder: (context) => SplashPageContent(
+              splashStore: Provider.of<SplashStore>(context))),
     );
+  }
+}
+
+class SplashPageContent extends StatefulWidget {
+  final SplashStore splashStore;
+
+  const SplashPageContent({
+    Key key,
+    @required this.splashStore,
+  }) : super(key: key);
+
+  @override
+  _SplashPageContentState createState() => _SplashPageContentState();
+}
+
+class _SplashPageContentState extends State<SplashPageContent> {
+  @override
+  void initState() {
+    super.initState();
+    widget.splashStore.load();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Container(
+            color: Color.fromARGB(255, 145, 205, 181),
+            child: Center(
+                child: Text(
+              "KEYS",
+              style: TextStyle(fontSize: 64, fontWeight: FontWeight.bold),
+            ))));
   }
 }
