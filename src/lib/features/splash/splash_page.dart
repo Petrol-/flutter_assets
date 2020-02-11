@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assets/core/services/navigation_service.dart';
+import 'package:flutter_assets/core/stores/preference_store.dart';
 import 'package:flutter_assets/features/splash/stores/splash_store.dart';
 import 'package:provider/provider.dart';
 
@@ -11,8 +12,8 @@ class SplashPage extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider<SplashStore>(
-            create: (_) =>
-                SplashStore(Provider.of<NavigationService>(context))),
+            create: (_) => SplashStore(Provider.of<NavigationService>(context),
+                Provider.of<PreferenceStore>(context))),
       ],
       child: Builder(
           builder: (context) => SplashPageContent(
