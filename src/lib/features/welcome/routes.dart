@@ -1,0 +1,1 @@
+const WelcomeRoute = "welcome";
