@@ -1,6 +1,6 @@
 import 'package:flutter_assets/core/services/navigation_service.dart';
 import 'package:flutter_assets/core/stores/preference_store.dart';
-import 'package:flutter_assets/features/home/routes.dart';
+import 'package:flutter_assets/features/welcome/routes.dart';
 import 'package:mobx/mobx.dart';
 
 part 'splash_store.g.dart';
@@ -17,10 +17,8 @@ abstract class SplashStoreBase with Store {
     var isFirstVisit = _preferenceStore.isFirstVisit();
     await Future.delayed(Duration(milliseconds: 1500));
     if (await isFirstVisit)
-      _navigationService.navigateTo(HomeRoute, replace: true);
+      _navigationService.navigateTo(WelcomeRoute, replace: true);
 
     //TODO Else navigate to Login/HomePage
   }
-
-
 }
