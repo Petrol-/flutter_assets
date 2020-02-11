@@ -57,10 +57,17 @@ class _WelcomePageContentState extends State<WelcomePageContent> {
       child: SafeArea(
         child: Stack(children: <Widget>[
           PageView(
-            children: <Widget>[WelcomePageDescription(), WelcomePageConsult(,WelcomePageNotify())],
+            children: <Widget>[
+              WelcomePageDescription(),
+              WelcomePageConsult(),
+              WelcomePageNotify()
+            ],
             controller: _pageController,
           ),
-          PositionnedDotIndicator(pageController: _pageController, dotCount: 3,)
+          PositionnedDotIndicator(
+            pageController: _pageController,
+            dotCount: 3,
+          )
         ]),
       ),
     );
@@ -68,15 +75,16 @@ class _WelcomePageContentState extends State<WelcomePageContent> {
 }
 
 class PositionnedDotIndicator extends StatelessWidget {
-  const PositionnedDotIndicator({
-    Key key,
-    @required PageController pageController,
-    @required int dotCount
-  }) : _pageController = pageController, 
-  _dotCount=dotCount, super(key: key);
+  const PositionnedDotIndicator(
+      {Key key,
+      @required PageController pageController,
+      @required int dotCount})
+      : _pageController = pageController,
+        _dotCount = dotCount,
+        super(key: key);
 
   final PageController _pageController;
-final int _dotCount;
+  final int _dotCount;
   @override
   Widget build(BuildContext context) {
     return Flexible(
@@ -88,7 +96,7 @@ final int _dotCount;
             alignment: Alignment.topCenter,
             child: SmoothPageIndicator(
               controller: _pageController,
-              count: _dotCount ,
+              count: _dotCount,
               effect: WormEffect(dotHeight: 10, dotWidth: 10),
             ),
           ),
