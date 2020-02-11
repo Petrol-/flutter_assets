@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assets/core/services/navigation_service.dart';
-import 'package:flutter_assets/core/stores/preference_store.dart';
+import 'package:flutter_assets/core/services/preference_service.dart';
 import 'package:flutter_assets/features/splash/stores/splash_store.dart';
 import 'package:provider/provider.dart';
 

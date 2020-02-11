@@ -1,5 +1,5 @@
 import 'package:flutter_assets/core/repositories/preference_repository.dart';
-import 'package:flutter_assets/core/stores/preference_store.dart';
+import 'package:flutter_assets/core/services/preference_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 

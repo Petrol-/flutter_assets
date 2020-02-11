@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assets/core/repositories/preference_repository.dart';
 import 'package:flutter_assets/core/services/navigation_service.dart';
-import 'package:flutter_assets/core/stores/preference_store.dart';
+import 'package:flutter_assets/core/services/preference_service.dart';
 import 'package:flutter_assets/features/splash/splash_page.dart';
 import 'package:flutter_assets/router.dart';
 import 'package:flutter_assets/routes.dart';
