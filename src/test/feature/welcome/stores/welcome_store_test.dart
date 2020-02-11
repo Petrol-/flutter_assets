@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   group('WelcomeStore', () {
     test('should instantiate', () {
-      final store = WelcomeStore();
+      final store = WelcomeStore(null);
       expect(store, isNotNull);
     });
   });
