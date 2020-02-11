@@ -17,8 +17,8 @@ class MyApp extends StatelessWidget {
         providers: [
           Provider<PreferenceRepository>(create: (_) => PreferenceRepository()),
           Provider<NavigationService>(create: (_) => NavigationService()),
-          ProxyProvider<PreferenceRepository, PreferenceStore>(
-            update: (_, repository, __) => PreferenceStore(repository),
+          ProxyProvider<PreferenceRepository, PreferenceService>(
+            update: (_, repository, __) => PreferenceService(repository),
           )
         ],
         child: Builder(

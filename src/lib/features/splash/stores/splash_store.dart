@@ -9,7 +9,7 @@ class SplashStore = SplashStoreBase with _$SplashStore;
 
 abstract class SplashStoreBase with Store {
   final NavigationService _navigationService;
-  final PreferenceStore _preferenceStore;
+  final PreferenceService _preferenceStore;
   SplashStoreBase(this._navigationService, this._preferenceStore);
 
   @action

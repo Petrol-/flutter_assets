@@ -8,7 +8,7 @@ class MockPreferenceRepository extends Mock implements PreferenceRepository {}
 void main() {
   group('PreferenceStore', () {
     test('should instanciate', () {
-      final store = PreferenceStore(null);
+      final store = PreferenceService(null);
       expect(store, isNotNull);
     });
 
@@ -16,7 +16,7 @@ void main() {
       final mockRepo = MockPreferenceRepository();
       when(mockRepo.fetchLastVisit()).thenAnswer((realInvocation) => null);
 
-      final result = await PreferenceStore(mockRepo).isFirstVisit();
+      final result = await PreferenceService(mockRepo).isFirstVisit();
 
       expect(result, isTrue);
     });
@@ -26,7 +26,7 @@ void main() {
       when(mockRepo.fetchLastVisit())
           .thenAnswer((realInvocation) => Future.value(DateTime.now()));
 
-      final result= await PreferenceStore(mockRepo).isFirstVisit();
+      final result= await PreferenceService(mockRepo).isFirstVisit();
 
       expect(result, isFalse);
     });

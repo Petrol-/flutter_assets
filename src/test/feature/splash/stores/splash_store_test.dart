@@ -6,7 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
 class MockNavigationService extends Mock implements NavigationService {}
-class MockPreferenceStore extends Mock implements PreferenceStore{}
+class MockPreferenceStore extends Mock implements PreferenceService{}
 void main() {
   group('SplashStore', () {
     test('load: given is first visit, should navigate to welcomePage after loading', () async {

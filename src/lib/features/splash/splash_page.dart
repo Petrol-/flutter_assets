@@ -13,7 +13,7 @@ class SplashPage extends StatelessWidget {
       providers: [
         Provider<SplashStore>(
             create: (_) => SplashStore(Provider.of<NavigationService>(context),
-                Provider.of<PreferenceStore>(context))),
+                Provider.of<PreferenceService>(context))),
       ],
       child: Builder(
           builder: (context) => SplashPageContent(
