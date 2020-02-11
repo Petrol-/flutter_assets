@@ -1,4 +1,5 @@
 import 'package:flutter_assets/core/services/navigation_service.dart';
+import 'package:flutter_assets/features/home/routes.dart';
 import 'package:flutter_assets/features/splash/stores/splash_store.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
@@ -13,7 +14,7 @@ void main() {
 
       await store.load();
       
-      verify(mockNavigationService.navigateTo("home"));
+      verify(mockNavigationService.navigateTo(HomeRoute, replace: true));
     });
   });
 }

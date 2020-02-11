@@ -1,4 +1,5 @@
 import 'package:flutter_assets/core/services/navigation_service.dart';
+import 'package:flutter_assets/features/home/routes.dart';
 import 'package:mobx/mobx.dart';
 
 part 'splash_store.g.dart';
@@ -12,7 +13,7 @@ abstract class SplashStoreBase with Store {
 
   @action
   Future load() async {
-    await  Future.delayed(Duration(seconds: 1));
-    _navigationService.navigateTo("home", replace: true);
+    await  Future.delayed(Duration(milliseconds: 1500));
+    _navigationService.navigateTo(HomeRoute, replace: true);
   }
 }
