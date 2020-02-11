@@ -13,6 +13,6 @@ abstract class SplashStoreBase with Store {
   @action
   Future load() async {
     await  Future.delayed(Duration(seconds: 1));
-    _navigationService.navigateTo("home");
+    _navigationService.navigateTo("home", replace: true);
   }
 }
