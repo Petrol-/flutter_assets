@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_assets/core/services/navigation_service.dart';
 import 'package:flutter_assets/features/login/stores/login_store.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatelessWidget {
@@ -8,7 +10,7 @@ class LoginPage extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider<LoginStore>(
-          create: (_) => LoginStore(),
+          create: (_) => LoginStore(Provider.of<NavigationService>(context)),
         )
       ],
       child: Builder(
@@ -59,9 +61,17 @@ class _LoginPageContentState extends State<LoginPageContent> {
                 ),
                 Expanded(
                   child: Center(
-                    child: ConnectButton(
-                      onClick: () {},
-                    ),
+                    child: Observer(builder: (_) {
+                      if (widget.store.isLoginIn)
+                        return CircularProgressIndicator(
+                          value: null,
+                        );
+                      return ConnectButton(
+                        onClick: () {
+                          widget.store.login();
+                        },
+                      );
+                    }),
                   ),
                 ),
                 Expanded(
@@ -96,7 +106,7 @@ class ConnectButton extends StatelessWidget {
       child: OutlineButton.icon(
           shape: new RoundedRectangleBorder(
               borderRadius: new BorderRadius.circular(30.0)),
-          onPressed: () {},
+          onPressed: onClick,
           icon: Icon(Icons.play_arrow),
           label: Text("Connect with Google")),
     );
