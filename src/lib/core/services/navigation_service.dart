@@ -9,6 +9,11 @@ class NavigationService {
     return _pushReplaceRoute(routeName);
   }
 
+  Future<dynamic> navigateToAndRemoveBelow(String routeName) {
+    return navigatorKey.currentState
+        .pushNamedAndRemoveUntil(routeName, (route) => false);
+  }
+
   Future<dynamic> _pushRoute(String routeName) {
     return navigatorKey.currentState.pushNamed(routeName);
   }
