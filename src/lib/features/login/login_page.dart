@@ -59,13 +59,8 @@ class _LoginPageContentState extends State<LoginPageContent> {
                 ),
                 Expanded(
                   child: Center(
-                    child: ConstrainedBox(
-                      constraints:
-                          const BoxConstraints(minWidth: double.infinity),
-                      child: OutlineButton.icon(
-                          onPressed: () {},
-                          icon: Icon(Icons.play_arrow),
-                          label: Text("Connect with Google")),
+                    child: ConnectButton(
+                      onClick: () {},
                     ),
                   ),
                 ),
@@ -83,6 +78,27 @@ class _LoginPageContentState extends State<LoginPageContent> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class ConnectButton extends StatelessWidget {
+  const ConnectButton({
+    Key key,
+    @required this.onClick,
+  }) : super(key: key);
+
+  final VoidCallback onClick;
+  @override
+  Widget build(BuildContext context) {
+    return ConstrainedBox(
+      constraints: const BoxConstraints(minWidth: double.infinity),
+      child: OutlineButton.icon(
+          shape: new RoundedRectangleBorder(
+              borderRadius: new BorderRadius.circular(30.0)),
+          onPressed: () {},
+          icon: Icon(Icons.play_arrow),
+          label: Text("Connect with Google")),
     );
   }
 }
