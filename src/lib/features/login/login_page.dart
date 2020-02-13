@@ -57,7 +57,12 @@ class _LoginPageContentState extends State<LoginPageContent> {
               children: <Widget>[
                 Expanded(
                   child: Align(
-                      alignment: Alignment.bottomLeft, child: Text("Connect")),
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        "Access the app",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600, fontSize: 20),
+                      )),
                 ),
                 Expanded(
                   child: Center(
