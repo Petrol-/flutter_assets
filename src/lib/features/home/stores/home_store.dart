@@ -8,7 +8,9 @@ abstract class _HomeStoreBase with Store {
   var selectedPagePosition = 0;
 
   @action
-  void selectPage(int position) {
+  int selectPage(int position) {
+    var oldPosition = selectedPagePosition;
     selectedPagePosition = position;
+    return oldPosition;
   }
 }

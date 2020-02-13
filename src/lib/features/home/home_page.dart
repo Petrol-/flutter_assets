@@ -44,22 +44,52 @@ class _HomePageContentState extends State<HomePageContent> {
           "Notifications",
         ))
   ];
+  var _tabPages = [
+    Container(
+      color: Colors.red,
+    ),
+    Container(
+      color: Colors.red,
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: Observer(builder: (_) {
-          return BottomNavigationBar(
-              currentIndex: widget.store.selectedPagePosition,
-              selectedItemColor: Colors.red,
-              backgroundColor: Colors.white,
-              onTap: (position) => widget.store.selectPage(position),
-              items: _bottomNavItems);
-        }),
-        body: Container(
-          child: Container(
-            color: Colors.red,
-          ),
-        ));
+      bottomNavigationBar: Observer(builder: (_) {
+        return BottomNavigationBar(
+            currentIndex: widget.store.selectedPagePosition,
+            selectedItemColor: Colors.red,
+            backgroundColor: Colors.white,
+            onTap: (position) {
+              _onTabPositionChanged(position);
+            },
+            items: _bottomNavItems);
+      }),
+      body: Observer(builder: (_) {
+        return IndexedStack(
+            index: widget.store.selectedPagePosition, children: _tabPages);
+      }),
+    );
   }
+
+  void _onTabPositionChanged(int position) {
+     var oldPosition = widget.store.selectPage(position);
+    // _tabbedPages.elementAt(oldPosition).onHide();
+    // _tabbedPages.elementAt(position).onDisplay();
+  }
+}
+
+class TabPage extends StatelessWidget {
+  const TabPage({Key key, @required this.child}) : super(key: key);
+  final TabbedPage child;
+  @override
+  Widget build(BuildContext context) {
+    return child;
+  }
+}
+
+abstract class TabbedPage extends Widget {
+  void onDisplay();
+  void onHide();
 }

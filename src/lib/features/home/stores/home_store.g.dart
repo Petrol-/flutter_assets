@@ -33,7 +33,7 @@ mixin _$HomeStore on _HomeStoreBase, Store {
       ActionController(name: '_HomeStoreBase');
 
   @override
-  void selectPage(int position) {
+  int selectPage(int position) {
     final _$actionInfo = _$_HomeStoreBaseActionController.startAction();
     try {
       return super.selectPage(position);
