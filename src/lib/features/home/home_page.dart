@@ -74,22 +74,8 @@ class _HomePageContentState extends State<HomePageContent> {
   }
 
   void _onTabPositionChanged(int position) {
-     var oldPosition = widget.store.selectPage(position);
+    var oldPosition = widget.store.selectPage(position);
     // _tabbedPages.elementAt(oldPosition).onHide();
     // _tabbedPages.elementAt(position).onDisplay();
   }
-}
-
-class TabPage extends StatelessWidget {
-  const TabPage({Key key, @required this.child}) : super(key: key);
-  final TabbedPage child;
-  @override
-  Widget build(BuildContext context) {
-    return child;
-  }
-}
-
-abstract class TabbedPage extends Widget {
-  void onDisplay();
-  void onHide();
 }
