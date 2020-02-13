@@ -1,9 +1,10 @@
+import 'package:flutter_assets/core/services/navigation_service.dart';
 import 'package:flutter_assets/features/home/routes.dart';
 import 'package:flutter_assets/features/login/stores/login_store.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../splash/stores/splash_store_test.dart';
+class MockNavigationService extends Mock implements NavigationService {}
 
 void main() {
   group('LoginStore', () {
