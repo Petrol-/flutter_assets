@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_assets/core/widgets/tab_page.dart';
 import 'package:flutter_assets/features/home/stores/home_store.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatelessWidget implements TabbedPage {
   HomePage({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -13,10 +13,18 @@ class HomePage extends StatelessWidget {
             create: (_) => HomeStore(),
           )
         ],
-        child: Builder(
-            builder: (context) =>
-                HomePageContent(store: Provider.of<HomeStore>(context))));
+        child: Builder(builder: (context) {
+          var homeStore = Provider.of<HomeStore>(context);
+          return HomePageContent(store: homeStore);
+        }));
   }
+
+  @override
+  void onDisplay() {
+  }
+
+  @override
+  void onHide() {}
 }
 
 class HomePageContent extends StatefulWidget {
@@ -26,6 +34,7 @@ class HomePageContent extends StatefulWidget {
   }) : super(key: key);
 
   final HomeStore store;
+
   @override
   _HomePageContentState createState() => _HomePageContentState();
 }
@@ -36,46 +45,8 @@ class _HomePageContentState extends State<HomePageContent> {
     super.initState();
   }
 
-  var _bottomNavItems = [
-    BottomNavigationBarItem(icon: Icon(Icons.home), title: Text("Home")),
-    BottomNavigationBarItem(
-        icon: Icon(Icons.notifications),
-        title: Text(
-          "Notifications",
-        ))
-  ];
-  var _tabPages = [
-    Container(
-      color: Colors.red,
-    ),
-    Container(
-      color: Colors.red,
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: Observer(builder: (_) {
-        return BottomNavigationBar(
-            currentIndex: widget.store.selectedPagePosition,
-            selectedItemColor: Colors.red,
-            backgroundColor: Colors.white,
-            onTap: (position) {
-              _onTabPositionChanged(position);
-            },
-            items: _bottomNavItems);
-      }),
-      body: Observer(builder: (_) {
-        return IndexedStack(
-            index: widget.store.selectedPagePosition, children: _tabPages);
-      }),
-    );
-  }
-
-  void _onTabPositionChanged(int position) {
-    var oldPosition = widget.store.selectPage(position);
-    // _tabbedPages.elementAt(oldPosition).onHide();
-    // _tabbedPages.elementAt(position).onDisplay();
+    return Container();
   }
 }

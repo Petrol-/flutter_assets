@@ -1,6 +1,6 @@
 import 'package:flutter_assets/core/services/navigation_service.dart';
-import 'package:flutter_assets/features/home/routes.dart';
 import 'package:flutter_assets/features/login/stores/login_store.dart';
+import 'package:flutter_assets/features/main_skeleton/routes.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
@@ -23,13 +23,13 @@ void main() {
       expect(store.isLoginIn, isTrue);
     });
 
-    test('login should redirect to home', () async {
+    test('login should redirect to main', () async {
       var nav = MockNavigationService();
       final store = LoginStore(nav);
 
       await store.login();
 
-      verify(nav.navigateToAndRemoveBelow(HomeRoute));
+      verify(nav.navigateToAndRemoveBelow(MainRoute));
     });
   });
 }

@@ -1,5 +1,5 @@
 import 'package:flutter_assets/core/services/navigation_service.dart';
-import 'package:flutter_assets/features/home/routes.dart';
+import 'package:flutter_assets/features/main_skeleton/routes.dart';
 import 'package:mobx/mobx.dart';
 part 'login_store.g.dart';
 
@@ -19,6 +19,6 @@ abstract class LoginStoreBase with Store {
   Future login() async {
     isLoginIn = true;
     await Future.delayed(Duration(seconds: 2));
-    _navigationService.navigateToAndRemoveBelow(HomeRoute);
+    _navigationService.navigateToAndRemoveBelow(MainRoute);
   }
 }
