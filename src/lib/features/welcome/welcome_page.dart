@@ -116,7 +116,7 @@ class PositionnedDotIndicator extends StatelessWidget {
   final int _dotCount;
   @override
   Widget build(BuildContext context) {
-    return Flexible(
+    return SizedBox.expand(
       child: Align(
         alignment: Alignment.bottomCenter,
         child: FractionallySizedBox(

@@ -17,7 +17,7 @@ class PagerView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
+    return SizedBox.expand(
       child: Padding(
         padding: const EdgeInsets.all(40),
         child: Column(
