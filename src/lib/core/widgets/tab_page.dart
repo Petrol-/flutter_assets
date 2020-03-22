@@ -1,15 +1,31 @@
 import 'package:flutter/material.dart';
 
-class TabPage extends StatelessWidget {
-  const TabPage({Key key, @required this.child}) : super(key: key);
-  final TabbedPage child;
-  @override
-  Widget build(BuildContext context) {
-    return child;
+class TabChanger {
+  CustomTab _listener;
+  void register(CustomTab listener) {
+    _listener = listener;
+  }
+
+  void removeListener() {
+    _listener = null;
+  }
+
+  void onDisplay() {
+    _listener?.onDisplay();
+  }
+
+  void onHide(){
+    _listener?.onHide();
   }
 }
 
-abstract class TabbedPage extends Widget {
+abstract class TabPage extends StatelessWidget implements CustomTab {
+  final TabChanger tabChanger = new TabChanger();
+
+  TabPage({Key key}) : super(key: key);
+}
+
+abstract class CustomTab {
   void onDisplay();
   void onHide();
 }

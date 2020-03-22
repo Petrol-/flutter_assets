@@ -38,8 +38,8 @@ class MyApp extends StatelessWidget {
             ),
             navigatorKey: Provider.of<NavigationService>(context).navigatorKey,
             onGenerateRoute: Router.generateRoute,
+            onGenerateInitialRoutes: Router.generateInitialRoute,
             initialRoute: InitialRoute,
-            home: SplashPage(),
           ),
         ));
   }

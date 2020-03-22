@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_assets/core/widgets/tab_page.dart';
+import 'package:flutter_assets/features/home/home_page.dart';
 import 'package:flutter_assets/features/main_skeleton/stores/main_skeleton_store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
@@ -44,13 +46,10 @@ class _MainSkeletonContentState extends State<MainSkeletonContent> {
           "Notifications",
         ))
   ];
-  var _tabPages = [
-    Container(
-      color: Colors.red,
-    ),
-    Container(
-      color: Colors.blue,
-    ),
+
+  var _tabbedPages = <TabPage>[
+    HomePage(color: Colors.red),
+    HomePage(color: Colors.blue),
   ];
 
   @override
@@ -68,14 +67,14 @@ class _MainSkeletonContentState extends State<MainSkeletonContent> {
       }),
       body: Observer(builder: (_) {
         return IndexedStack(
-            index: widget.store.selectedPagePosition, children: _tabPages);
+            index: widget.store.selectedPagePosition, children: _tabbedPages);
       }),
     );
   }
 
   void _onTabPositionChanged(int position) {
     var oldPosition = widget.store.selectPage(position);
-    // _tabbedPages.elementAt(oldPosition).onHide();
-    //  _tabbedPages.elementAt(position).onDisplay();
+    _tabbedPages.elementAt(oldPosition).onHide();
+    _tabbedPages.elementAt(position).onDisplay();
   }
 }
