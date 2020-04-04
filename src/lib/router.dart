@@ -10,6 +10,8 @@ import 'package:flutter_assets/features/welcome/welcome_page.dart';
 
 class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
+    if(settings.isInitialRoute)
+    return MaterialPageRoute(builder: (_) => SplashPage());
     switch (settings.name) {
       case (MainRoute):
         return MaterialPageRoute(builder: (_) => MainSkeletonPage());
