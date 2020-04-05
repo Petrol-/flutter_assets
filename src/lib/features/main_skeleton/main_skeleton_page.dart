@@ -48,7 +48,7 @@ class _MainSkeletonContentState extends State<MainSkeletonContent> {
   ];
 
   var _tabbedPages = <TabPage>[
-    HomePage(color: Colors.red),
+    HomePage(color: Colors.red, isInitialPage: true,),
     HomePage(color: Colors.blue),
   ];
 
@@ -72,9 +72,18 @@ class _MainSkeletonContentState extends State<MainSkeletonContent> {
     );
   }
 
+  TabPage _pageAt(int position) {
+    return _tabbedPages.elementAt(position);
+  }
+
   void _onTabPositionChanged(int position) {
+    if (_isSamePage(position)) return;
     var oldPosition = widget.store.selectPage(position);
-    _tabbedPages.elementAt(oldPosition).onHide();
-    _tabbedPages.elementAt(position).onDisplay();
+    _pageAt(oldPosition).onHide();
+    _pageAt(position).onDisplay();
+  }
+
+  bool _isSamePage(position) {
+    return position == widget.store.selectedPagePosition;
   }
 }

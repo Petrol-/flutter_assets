@@ -14,15 +14,15 @@ class TabChanger {
     _listener?.onDisplay();
   }
 
-  void onHide(){
+  void onHide() {
     _listener?.onHide();
   }
 }
 
 abstract class TabPage extends StatelessWidget implements CustomTab {
   final TabChanger tabChanger = new TabChanger();
-
-  TabPage({Key key}) : super(key: key);
+  final bool isInitialPage;
+  TabPage({Key key, this.isInitialPage = false}) : super(key: key);
 }
 
 abstract class CustomTab {
