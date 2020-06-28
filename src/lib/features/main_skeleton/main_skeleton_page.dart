@@ -3,6 +3,7 @@ import 'package:flutter_assets/core/widgets/tab_page.dart';
 import 'package:flutter_assets/features/home/home_page.dart';
 import 'package:flutter_assets/features/main_skeleton/stores/main_skeleton_store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 class MainSkeletonPage extends StatelessWidget {
@@ -15,8 +16,7 @@ class MainSkeletonPage extends StatelessWidget {
           )
         ],
         child: Builder(builder: (context) {
-          return MainSkeletonContent(
-              store: Provider.of<MainSkeletonStore>(context));
+          return MainSkeletonContent(store: Provider.of<MainSkeletonStore>(context));
         }));
   }
 }
@@ -39,17 +39,39 @@ class _MainSkeletonContentState extends State<MainSkeletonContent> {
   }
 
   var _bottomNavItems = [
-    BottomNavigationBarItem(icon: Icon(Icons.home), title: Text("Home")),
     BottomNavigationBarItem(
-        icon: Icon(Icons.notifications),
-        title: Text(
-          "Notifications",
-        ))
+      icon: FaIcon(FontAwesomeIcons.building),
+      title: Text("Adhérent"),
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(FontAwesomeIcons.toolbox),
+      title: Text("Site"),
+    ),
+    BottomNavigationBarItem(
+      icon: FaIcon(FontAwesomeIcons.hdd),
+      title: Text("Matériels"),
+    ),
+    BottomNavigationBarItem(
+      icon: FaIcon(FontAwesomeIcons.images),
+      title: Text("Photos"),
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.exit_to_app),
+      title: Text("Fin d'inter"),
+    ),
   ];
 
   var _tabbedPages = <TabPage>[
-    HomePage(color: Colors.red, isInitialPage: true,),
-    HomePage(color: Colors.blue),
+    HomePage(
+      title: "Adhérent",
+      isInitialPage: true,
+    ),
+    HomePage(
+      title: "Site",
+    ),
+    HomePage(title: "Matériels"),
+    HomePage(title: "Photos"),
+    HomePage(title: "Fin d'intervention"),
   ];
 
   @override
@@ -58,16 +80,16 @@ class _MainSkeletonContentState extends State<MainSkeletonContent> {
       bottomNavigationBar: Observer(builder: (_) {
         return BottomNavigationBar(
             currentIndex: widget.store.selectedPagePosition,
-            selectedItemColor: Colors.red,
-            backgroundColor: Colors.white,
+            selectedItemColor: Colors.blue,
+            unselectedItemColor: Colors.grey,
+            backgroundColor: Colors.green,
             onTap: (position) {
               _onTabPositionChanged(position);
             },
             items: _bottomNavItems);
       }),
       body: Observer(builder: (_) {
-        return IndexedStack(
-            index: widget.store.selectedPagePosition, children: _tabbedPages);
+        return IndexedStack(index: widget.store.selectedPagePosition, children: _tabbedPages);
       }),
     );
   }
